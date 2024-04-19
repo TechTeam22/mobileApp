@@ -10,6 +10,8 @@ import MapScreen from './screens/MapScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegistrationScreen from './screens/RegistrationScreen';
+import CalendarScreen from './screens/CalendarScreen';
+import TodoListScreen from './screens/TodoListScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +28,8 @@ function App() {
         <Stack.Screen name="Marketplace" component={MarketplaceScreen} />
         <Stack.Screen name="Map" component={MapScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="Calendar" component={CalendarScreen} />
+        <Stack.Screen name="TodoList" component={TodoListScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

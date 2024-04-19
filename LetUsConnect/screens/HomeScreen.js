@@ -13,7 +13,9 @@ const HomeScreen = () => {
     { name: 'Resources', icon: 'folder', color: '#ffc107', screen: 'Resources' },
     { name: 'Marketplace', icon: 'store', color: '#4caf50', screen: 'Marketplace' },
     { name: 'Campus Map', icon: 'map', color: '#ff6347', screen: 'Map' },
-    { name: 'Profile', icon: 'account-circle', color: '#d32f2f', screen: 'Profile' }
+    { name: 'Profile', icon: 'account-circle', color: '#d32f2f', screen: 'Profile' },
+    { name: 'Calendar', icon: 'calendar', color: '#009688', screen: 'Calendar' }, 
+    { name: 'Todo List', icon: 'format-list-bulleted', color: '#673ab7', screen: 'TodoList' } 
   ];
 
   const handleLogout = async () => {
