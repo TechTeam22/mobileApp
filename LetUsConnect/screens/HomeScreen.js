@@ -1,20 +1,25 @@
 import React from 'react';
 import { View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { Text, Button, Card, Title } from 'react-native-paper';
+import { Text, Card, Title } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation } from '@react-navigation/native';
 
-const HomeScreen = ({ navigation }) => {
-  // Define each feature with a specific icon color
+const HomeScreen = () => {
+  const navigation = useNavigation();
+
   const features = [
     { name: 'Chat', icon: 'chat', color: '#f44336', screen: 'Chat' },
     { name: 'Academic', icon: 'school', color: '#3f51b5', screen: 'Academic' },
     { name: 'Resources', icon: 'folder', color: '#ffc107', screen: 'Resources' },
     { name: 'Marketplace', icon: 'store', color: '#4caf50', screen: 'Marketplace' },
-    { name: 'Campus Map', icon: 'map', color: '#ff6347', screen: 'Map' }  // Map feature added
+    { name: 'Campus Map', icon: 'map', color: '#ff6347', screen: 'Map' },
+    { name: 'Profile', icon: 'account-circle', color: '#d32f2f', screen: 'Profile' }
   ];
 
-  const logout = () => {
-    navigation.replace('Login');
+  const handleLogout = async () => {
+    // Perform logout actions as needed
+    // For example, clear AsyncStorage
+    navigation.navigate('Login');
   };
 
   return (
@@ -29,9 +34,9 @@ const HomeScreen = ({ navigation }) => {
           </TouchableOpacity>
         ))}
       </View>
-      <Button icon="logout" mode="contained" onPress={logout} style={styles.logoutButton}>
-        Logout
-      </Button>
+      <TouchableOpacity style={styles.logoutButtonContainer} onPress={handleLogout}>
+        <Text style={styles.logoutButton}>Logout</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 };
@@ -59,10 +64,14 @@ const styles = StyleSheet.create({
   title: {
     color: 'white', // Text color for contrast
   },
-  logoutButton: {
+  logoutButtonContainer: {
     marginTop: 20,
-    backgroundColor: '#ff6666', // Lighter red color for the logout button
-    color: 'white',
+    alignItems: 'center',
+  },
+  logoutButton: {
+    fontSize: 18,
+    color: '#d9534f', // Red color for the logout button
+    fontWeight: 'bold',
   }
 });
 

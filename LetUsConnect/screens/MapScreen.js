@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 
 const MapScreen = () => {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
-  const [mapRegion, setMapRegion] = useState({
-    latitude: 37.78825,
-    longitude: -122.4324,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,
-  });
+  const destination = { latitude: 37.7749, longitude: -122.4194 }; // Example destination coordinates
 
   useEffect(() => {
     (async () => {
@@ -22,12 +17,11 @@ const MapScreen = () => {
       }
 
       let currentLocation = await Location.getCurrentPositionAsync({});
-      setLocation(currentLocation);
-      setMapRegion({
+      setLocation({
         latitude: currentLocation.coords.latitude,
         longitude: currentLocation.coords.longitude,
-        latitudeDelta: 0.005,
-        longitudeDelta: 0.005,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
       });
     })();
   }, []);
@@ -37,23 +31,25 @@ const MapScreen = () => {
       {location ? (
         <MapView
           style={styles.map}
-          initialRegion={mapRegion}
+          initialRegion={{
+            latitude: location.latitude,
+            longitude: location.longitude,
+            latitudeDelta: 0.005,
+            longitudeDelta: 0.005
+          }}
           showsUserLocation={true}
           followUserLocation={true}
         >
           <Marker
-            coordinate={{
-              latitude: location.coords.latitude,
-              longitude: location.coords.longitude
-            }}
+            coordinate={location}
             title={"Your Location"}
             description={"You are here"}
           />
           <Marker
-            coordinate={{ latitude: 37.78825, longitude: -122.4324 }} // Example destination
+            coordinate={destination}
             title={"Destination"}
             description={"Your destination"}
-            pinColor="blue" // Marker color
+            pinColor="blue" // Marker color to differentiate destination
           />
         </MapView>
       ) : <Text>{errorMsg || "Loading..."}</Text>}
