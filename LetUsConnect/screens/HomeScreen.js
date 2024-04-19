@@ -1,45 +1,69 @@
 import React from 'react';
-import { View, Text, Button, FlatList, StyleSheet } from 'react-native';
-
-const data = [
-  {
-    id: '1',
-    title: 'Welcome Event',
-    date: '2024-04-25',
-    location: 'Main Hall',
-    description: 'Join us for the welcome event to kick off the new academic year with fun and networking!'
-  },
-  // Add more events or details as needed
-];
+import { View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, Button, Card, Title } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const HomeScreen = ({ navigation }) => {
+  // Define each feature with a specific icon color
+  const features = [
+    { name: 'Chat', icon: 'chat', color: '#f44336', screen: 'Chat' },
+    { name: 'Academic', icon: 'school', color: '#3f51b5', screen: 'Academic' },
+    { name: 'Resources', icon: 'folder', color: '#ffc107', screen: 'Resources' },
+    { name: 'Marketplace', icon: 'store', color: '#4caf50', screen: 'Marketplace' },
+    { name: 'Campus Map', icon: 'map', color: '#ff6347', screen: 'Map' }  // Map feature added
+  ];
+
+  const logout = () => {
+    navigation.replace('Login');
+  };
+
   return (
-    <FlatList
-      data={data}
-      keyExtractor={item => item.id}
-      renderItem={({ item }) => (
-        <View style={styles.item}>
-          <Text style={styles.title}>{item.title}</Text>
-          <Button
-            title="View Details"
-            onPress={() => navigation.navigate('Details', { item })}
-          />
-        </View>
-      )}
-    />
+    <ScrollView contentContainerStyle={styles.container}>
+      <View style={styles.tileContainer}>
+        {features.map((feature, index) => (
+          <TouchableOpacity key={index} style={styles.tile} onPress={() => navigation.navigate(feature.screen)}>
+            <Card style={[styles.card, {backgroundColor: feature.color}]}>
+              <Icon name={feature.icon} size={40} color="white" />
+              <Title style={styles.title}>{feature.name}</Title>
+            </Card>
+          </TouchableOpacity>
+        ))}
+      </View>
+      <Button icon="logout" mode="contained" onPress={logout} style={styles.logoutButton}>
+        Logout
+      </Button>
+    </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  item: {
-    padding: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
+  container: {
+    padding: 10,
+    alignItems: 'center',
+    backgroundColor: 'white',
+  },
+  tileContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
+  tile: {
+    margin: 5,
+    width: '40%', // Adjust size accordingly
+  },
+  card: {
+    height: 120, // Keeping square shape
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   title: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    color: 'white', // Text color for contrast
   },
+  logoutButton: {
+    marginTop: 20,
+    backgroundColor: '#ff6666', // Lighter red color for the logout button
+    color: 'white',
+  }
 });
 
 export default HomeScreen;
