@@ -1,44 +1,44 @@
-// TodoListScreen.js
-
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { View, Text, StyleSheet, TextInput, Button, FlatList, TouchableOpacity } from 'react-native';
 
 const TodoListScreen = () => {
-  const navigation = useNavigation();
-  const [task, setTask] = useState('');
+  const [tasks, setTasks] = useState([]);
+  const [newTask, setNewTask] = useState('');
 
-  const handleAddTask = async () => {
-    if (!task.trim()) {
-      Alert.alert('Error', 'Please enter a task');
-      return;
+  const addTask = () => {
+    if (newTask.trim() !== '') {
+      setTasks([...tasks, newTask]);
+      setNewTask('');
     }
-    
-    try {
-      // Save task to AsyncStorage or your preferred database
-      // Example using AsyncStorage:
-      const existingTasks = JSON.parse(await AsyncStorage.getItem('tasks')) || [];
-      const newTask = { task, dateTime: new Date().toISOString() }; // Store current date and time with task
-      const updatedTasks = [...existingTasks, newTask];
-      await AsyncStorage.setItem('tasks', JSON.stringify(updatedTasks));
+  };
 
-      // Navigate back to Home screen after adding task
-      navigation.goBack();
-    } catch (error) {
-      console.error('Error adding task:', error);
-    }
+  const deleteTask = (index) => {
+    const updatedTasks = [...tasks];
+    updatedTasks.splice(index, 1);
+    setTasks(updatedTasks);
   };
 
   return (
     <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter task"
-        value={task}
-        onChangeText={setTask}
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          value={newTask}
+          onChangeText={setNewTask}
+          placeholder="Enter a new task"
+        />
+        <Button title="Add" onPress={addTask} />
+      </View>
+      <FlatList
+        data={tasks}
+        renderItem={({ item, index }) => (
+          <TouchableOpacity onPress={() => deleteTask(index)}>
+            <Text style={styles.task}>{item}</Text>
+          </TouchableOpacity>
+        )}
+        keyExtractor={(item, index) => index.toString()}
+        style={styles.list}
       />
-      <Button title="Add Task" onPress={handleAddTask} />
     </View>
   );
 };
@@ -46,16 +46,26 @@ const TodoListScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     padding: 20,
   },
-  input: {
-    width: '80%',
+  inputContainer: {
+    flexDirection: 'row',
     marginBottom: 20,
+  },
+  input: {
+    flex: 1,
+    marginRight: 10,
+    padding: 10,
     borderWidth: 1,
     borderColor: '#ccc',
-    padding: 10,
+    borderRadius: 5,
+  },
+  list: {
+    flex: 1,
+  },
+  task: {
+    fontSize: 18,
+    marginBottom: 10,
   },
 });
 
