@@ -44,7 +44,7 @@ they can get to know about all the required information about the campus.
 ![Register Page](images/register.jpeg)
 
 - Profile Page
-<img src="images/rohithprofile.jpeg" alt="Profile" width="300" height="300">
+<img src="images/rohithprofile.jpeg" alt="Profile" width="300" height="500">
 
 ![Profile](images/rohithprofile2.jpeg)
 
