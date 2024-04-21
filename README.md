@@ -49,8 +49,19 @@ they can get to know about all the required information about the campus.
 <img src="images/rohithprofile2.jpeg" alt="Profile" width="300" height="500">
 
 - Acedemics
- <img src="images/academics.jpeg" alt="Profile" width="300" height="500">
-
+<img src="images/academics.jpeg" alt="Profile" width="300" height="500">
+- Calender
+<img src="images/calender.jpeg" alt="Profile" width="300" height="500">
+- Chat
+<img src="images/chat.jpeg" alt="Profile" width="300" height="500">
+- Maps
+<img src="images/maps.jpeg" alt="Profile" width="300" height="500">
+- Market Management
+<img src="images/market.jpeg" alt="Profile" width="300" height="500">
+- Resources
+<img src="images/resources.jpeg" alt="Profile" width="300" height="500">
+- To Do List
+<img src="images/todolist.jpeg" alt="Profile" width="300" height="500">
 
 
 
