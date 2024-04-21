@@ -44,7 +44,8 @@ they can get to know about all the required information about the campus.
 ![Register Page](images/register.jpeg)
 
 - Profile Page
-![Profile](images/rohithprofile.jpeg)
+<img src="images/rohithprofile.jpeg" alt="Profile" width="300" height="300">
+
 ![Profile](images/rohithprofile2.jpeg)
 
 - Acedemics
