@@ -45,6 +45,9 @@ they can get to know about all the required information about the campus.
 - Register Page
 <img src="images/register.jpeg" alt="Profile" width="300" height="500">
 
+- Home Page
+<img src="images/home.jpeg" alt="Profile" width="300" height="500">
+
 - Profile Page
 <img src="images/rohithprofile.jpeg" alt="Profile" width="300" height="500">
 
