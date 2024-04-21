@@ -38,18 +38,18 @@ they can get to know about all the required information about the campus.
 
 - Login Page
 
-![Login](images/chetanlogin.jpeg)
+<img src="images/chetanlogin.jpeg" alt="Profile" width="300" height="500">
 
 - Register Page
-![Register Page](images/register.jpeg)
+<img src="images/register.jpeg" alt="Profile" width="300" height="500">
 
 - Profile Page
 <img src="images/rohithprofile.jpeg" alt="Profile" width="300" height="500">
 
-![Profile](images/rohithprofile2.jpeg)
+<img src="images/rohithprofile2.jpeg" alt="Profile" width="300" height="500">
 
 - Acedemics
-  ![Acedemics](images/academics.jpeg)
+ <img src="images/academics.jpeg" alt="Profile" width="300" height="500">
 
 
 
