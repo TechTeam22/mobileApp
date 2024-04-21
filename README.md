@@ -6,7 +6,7 @@ Naga Chetan Pidugu (M15805944)
 
 ## Description :
 
-## About The ApplicaBon:
+## About The Application:
 - We designed this application for the students, especially for the freshmen who join the college. They can get to
 know about the college or university and to help all students with their queries and connect one with
 another.in the following sections we will give a detailed description about the application.
@@ -19,7 +19,7 @@ issue is the absence of a single plaDorm for managing every aspect of college li
 academic scheduling, campus resource navigation, and an online store for essentials, maps for directions and
 advice for queries and many more. Current solutions lack in coordination. 
 
-## Project ObjecBve: 
+## Project Objective: 
 - Let Us Connect aims to provide college students with comprehensive, easy-to-use
 software that functions as a one-stop shop. It seeks to assist students in effectively managing their timetables,
 establishing social and intellectual connections with classmates, navigating campus resources with ease, and
